@@ -1,19 +1,7 @@
-import webview
-import os
+import flet as ft
 
-# هذا السطر يحدد مسار المجلد الحالي الذي يوجد به البرنامج
-current_path = os.path.dirname(os.path.abspath(__file__))
-cache_dir = os.path.join(current_path, 'cache')
+def main(page: ft.Page):
+    # استخدام flet لعرض الموقع بدلاً من المكتبة الخارجية
+    page.add(ft.WebView("https://sayedabobakr-droid.github.io/taiping-search/", expand=True))
 
-# التأكد من إنشاء المجلد إذا لم يكن موجوداً
-if not os.path.exists(cache_dir):
-    os.makedirs(cache_dir)
-
-window = webview.create_window(
-    'Taiping Search', 
-    'https://sayedabobakr-droid.github.io/taiping-search/',
-    private_mode=False
-)
-
-# هنا نمرر المسار الكامل للمجلد
-webview.start(storage_path=cache_dir)
+ft.app(target=main)
